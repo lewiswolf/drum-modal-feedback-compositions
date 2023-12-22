@@ -1,0 +1,136 @@
+// var
+
+$ipad: 812px;
+$iphone: 400px;
+$background: #e5e5e5;
+$foreground: #101010;
+$highlight: #b4b4b4;
+
+// mixins
+
+@mixin focus() {
+	&:focus-visible {
+		outline: $highlight solid 3px;
+	}
+}
+
+@mixin video() {
+	height: 40.5vw;
+	max-height: 400px;
+	width: auto;
+	max-width: 100%;
+	aspect-ratio: 16/9;
+	justify-self: center;
+	user-select: none;
+
+	@media (max-width: $ipad) {
+		height: auto;
+		width: 100%;
+	}
+}
+
+@mixin highlight_text() {
+	::selection {
+		background-color: $highlight;
+	}
+}
+
+// structure
+
+html {
+	height: fit-content;
+	width: 100%;
+	margin: 0;
+	font-family: 'inter', sans-serif;
+	font-size: 16px;
+	font-weight: 500;
+	color: $foreground;
+	background-image: url('./images/background.png');
+	background-size: 30px 30px;
+	background-color: $background;
+}
+
+body {
+	height: inherit;
+	width: calc(100vw - 50px);
+	margin: 0;
+	padding: 50px 25px;
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+	-webkit-text-size-adjust: 100%;
+
+	@media (max-width: $ipad) {
+		margin: 0;
+		padding: 25px;
+	}
+}
+
+#root {
+	height: inherit;
+	width: 80%;
+	max-width: calc(100vw - 50px);
+	margin: auto;
+
+	@media (max-width: $ipad) {
+		width: 100%;
+		margin: 0;
+	}
+
+	h1 {
+		margin: 0;
+		font-weight: 500;
+		user-select: none;
+	}
+
+	h2 {
+		text-align: right;
+		font-weight: 300;
+		font-size: 20px;
+		font-style: oblique;
+		text-transform: lowercase;
+		user-select: none;
+	}
+
+	h3 {
+		font-weight: 300;
+		user-select: none;
+	}
+
+	p {
+		font-weight: 400;
+		user-select: none;
+	}
+
+	a {
+		@include focus();
+		color: inherit;
+		user-select: none;
+	}
+}
+
+footer,
+header {
+	margin: 0;
+
+	p {
+		margin: 0;
+		text-align: justify;
+	}
+}
+
+main {
+	height: fit-content;
+	margin: 200px 0;
+	text-align: right;
+	display: grid;
+	grid-gap: 100px;
+
+	@media (max-width: $ipad) {
+		margin: 100px 0;
+		grid-gap: 50px;
+	}
+}
+
+// children
+@import 'submission.scss';
