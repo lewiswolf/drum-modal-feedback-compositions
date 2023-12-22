@@ -22,6 +22,7 @@ root &&
 				<p>
 					acknowledgements
 				</p>
+				<a href='http://lewiswolstanholme.co.uk' rel='noreferrer' target='_blank'>web design by lewis wolstanholme</a>
 			</footer>
 		</React.StrictMode>,
 	)

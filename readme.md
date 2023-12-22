@@ -88,6 +88,7 @@ Add the title of your project, your name, a description of the project, and any 
 		<p>
 			acknowledgements
 		</p>
+		...
 	</footer>
 </React.StrictMode>
 ```
