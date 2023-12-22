@@ -11,8 +11,8 @@ A template for posting artworks created for a composition study.
 First fork the repository, then...
 
 ```bash
-	git clone <your-fork>
-	npm install --include=dev
+git clone <your-fork>
+npm install --include=dev
 ```
 
 # Customise
@@ -85,9 +85,7 @@ Add the title of your project, your name, a description of the project, and any 
 		<Submissions randomise_config={true} />
 	</main>
 	<footer>
-		<p>
-			acknowledgements
-		</p>
+		<p>acknowledgements</p>
 		...
 	</footer>
 </React.StrictMode>
