@@ -19,10 +19,10 @@ root &&
 				<Submissions randomise_config={true} />
 			</main>
 			<footer>
-				<p>
-					acknowledgements
-				</p>
-				<a href='http://lewiswolstanholme.co.uk' rel='noreferrer' target='_blank'>web design by lewis wolstanholme</a>
+				<p>acknowledgements</p>
+				<a href='http://lewiswolstanholme.co.uk' rel='noreferrer' target='_blank'>
+					web design by lewis wolstanholme
+				</a>
 			</footer>
 		</React.StrictMode>,
 	)

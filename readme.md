@@ -1,10 +1,10 @@
 # Composition Study Template
 
-A template for posting artworks created for a composition study. 
+A template for posting artworks created for a composition study.
 
 # Dependencies
 
-- [node](https://formulae.brew.sh/formula/node)
+-   [node](https://formulae.brew.sh/formula/node)
 
 # Install
 
@@ -23,7 +23,7 @@ You will need to update various files to make this template your own.
 
 Change this file to match the name of your github repository - this will define the location of your website for github pages.
 
-``` ts
+```ts
 export default defineConfig({
 	base: '/name-of-your-github-repo',
 	...
@@ -35,7 +35,6 @@ export default defineConfig({
 Add the title of your study, your own name, and the project description. This is for accessibility.
 
 ```html
-<!doctype html>
 <html lang="en">
 	<head>
 		<title>Title</title>
@@ -93,7 +92,7 @@ Add the title of your project, your name, a description of the project, and any 
 
 ### `src/config.ts`
 
-Here you will create a list of information about your participants and the work they created. To do this, you will create an object of the type `SubmissionJSON` for each participant. 
+Here you will create a list of information about your participants and the work they created. To do this, you will create an object of the type `SubmissionJSON` for each participant.
 
 ```ts
 type SubmissionJSON = {
@@ -107,7 +106,7 @@ type SubmissionJSON = {
 }
 ```
 
-For example, to include one of my own compositions, you would write: 
+For example, to include one of my own compositions, you would write:
 
 ```ts
 const config: SubmissionJSON[] = [
@@ -117,11 +116,11 @@ const config: SubmissionJSON[] = [
 			links: [
 				{
 					href: 'http://lewiswolstanholme.co.uk',
-					type 'website' 
+					type 'website',
 				},
 				{
 					href: 'julia___set',
-					type 'instagram'
+					type 'instagram',
 				},
 			],
 		},
@@ -134,7 +133,7 @@ const config: SubmissionJSON[] = [
 # Develop
 
 ```bash
-npm run dev 
+npm run dev
 ```
 
 # Test
