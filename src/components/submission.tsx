@@ -10,7 +10,7 @@ const Submission: React.FC<{
 	onPlay: (b: boolean) => void
 }> = ({ author = undefined, audio = [], video = [], updatePlaying = undefined, onPlay = () => {} }): JSX.Element => {
 	/*
-	
+	Generates an interactive submission from a given object of type SubmissionJSON.
 	*/
 
 	// set playbar width relative to parent width
@@ -77,35 +77,30 @@ const Submission: React.FC<{
 			{audio.length ? (
 				audio.map((filename: string) => (
 					<Fragment key={filename}>
-						<>
-							<audio
-								ref={audio_ref}
-								src={`/compositions-for-arbitrarily-shaped-drums/audio/${filename}`}
-							/>
-							<Playbar
-								ariaLabel={author ? `audio player for ${author.name.toLowerCase()}` : 'audio player'}
-								setPlaying={audio_playing}
-								setValue={audio_time}
-								width={width}
-								onChange={(v: number) => {
-									// scrub through the audio
-									setCurrentTime(v)
-									if (audio_ref.current) {
-										audio_ref.current.currentTime = v * audio_ref.current.duration
-									}
-								}}
-								onPlay={(b: boolean) => {
-									// play or pause the audio
-									if (b && audio_ref.current) {
-										setPlaying(true)
-									} else {
-										audio_ref.current?.pause()
-										setPlaying(false)
-									}
-									onPlay(b)
-								}}
-							/>
-						</>
+						<audio ref={audio_ref} src={`/compositions-for-arbitrarily-shaped-drums/audio/${filename}`} />
+						<Playbar
+							ariaLabel={author ? `audio player for ${author.name.toLowerCase()}` : 'audio player'}
+							setPlaying={audio_playing}
+							setValue={audio_time}
+							width={width}
+							onChange={(v: number) => {
+								// scrub through the audio
+								setCurrentTime(v)
+								if (audio_ref.current) {
+									audio_ref.current.currentTime = v * audio_ref.current.duration
+								}
+							}}
+							onPlay={(b: boolean) => {
+								// play or pause the audio
+								if (b && audio_ref.current) {
+									setPlaying(true)
+								} else {
+									audio_ref.current?.pause()
+									setPlaying(false)
+								}
+								onPlay(b)
+							}}
+						/>
 					</Fragment>
 				))
 			) : (
