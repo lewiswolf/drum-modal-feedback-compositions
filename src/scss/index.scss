@@ -29,7 +29,7 @@ $highlight: #b4b4b4;
 	}
 }
 
-@mixin highlight_text() {
+@mixin highlight-text() {
 	::selection {
 		background-color: $highlight;
 	}
@@ -41,7 +41,7 @@ html {
 	height: fit-content;
 	width: 100%;
 	margin: 0;
-	font-family: 'inter', sans-serif;
+	font-family: Inter, sans-serif;
 	font-size: 16px;
 	font-weight: 500;
 	color: $foreground;
@@ -57,10 +57,10 @@ body {
 	padding: 50px 25px;
 	font-family: inherit;
 	font-size: inherit;
+	text-size-adjust: 100%;
 	color: inherit;
-	-webkit-text-size-adjust: 100%;
 
-	@media (max-width: $ipad) {
+	@media (width <= $ipad) {
 		margin: 0;
 		padding: 25px;
 	}
@@ -72,7 +72,7 @@ body {
 	max-width: calc(100vw - 50px);
 	margin: auto;
 
-	@media (max-width: $ipad) {
+	@media (width <= $ipad) {
 		width: 100%;
 		margin: 0;
 	}
@@ -103,7 +103,7 @@ body {
 	}
 
 	a {
-		@include focus();
+		@include focus;
 		color: inherit;
 		user-select: none;
 	}
@@ -138,11 +138,11 @@ main {
 	display: grid;
 	grid-gap: 100px;
 
-	@media (max-width: $ipad) {
+	@media (width <= $ipad) {
 		margin: 100px 0;
 		grid-gap: 50px;
 	}
 }
 
 // children
-@import 'submission.scss';
+@import 'submission';

@@ -21,18 +21,20 @@
 		"eslint-plugin-react-refresh": "^0.4.5",
 		"gh-pages": "^6.1.1",
 		"prettier": "^3.1.1",
+		"stylelint": "^16.1.0",
+		"stylelint-config-standard-scss": "^12.0.0",
 		"typescript": "^5.3.3",
 		"vite": "^5.0.10",
 		"vite-plugin-compression2": "^0.11.0"
 	},
 	"scripts": {
-		"dev": "vite --host",
 		"build": "tsc && vite build",
+		"dev": "vite --host",
 		"preview": "vite preview",
 		"predeploy": "npm run build",
 		"deploy": "gh-pages -d dist",
-		"lint": "prettier . --write",
-		"test": "tsc && eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+		"format": "prettier . --write",
+		"test": "tsc && eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 && stylelint **/*.scss"
 	},
 	"eslintConfig": {
 		"root": true,
@@ -82,5 +84,14 @@
 		"tabWidth": 4,
 		"trailingComma": "all",
 		"useTabs": true
+	},
+	"stylelint": {
+		"extends": "stylelint-config-standard-scss",
+		"rules": {
+			"declaration-empty-line-before": null,
+			"no-descending-specificity": null,
+			"no-invalid-position-at-import-rule": null,
+			"scss/double-slash-comment-empty-line-before": null
+		}
 	}
 }
