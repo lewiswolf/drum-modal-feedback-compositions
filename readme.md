@@ -134,13 +134,13 @@ const config: SubmissionJSON[] = [
 
 ```bash
 npm run dev
+npm run format
 ```
 
 # Test
 
 ```bash
 npm run test
-npm run lint
 ```
 
 # Upload to Github Pages
