@@ -1,5 +1,5 @@
 // dependencies
-import React from 'react'
+import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
 // src
@@ -9,7 +9,7 @@ import { Submissions } from './components'
 const root = document.getElementById('root')
 root &&
 	createRoot(root).render(
-		<React.StrictMode>
+		<StrictMode>
 			<header>
 				<h1>Title</h1>
 				<h2>curated by ...</h2>
@@ -24,5 +24,5 @@ root &&
 					web design by lewis wolstanholme
 				</a>
 			</footer>
-		</React.StrictMode>,
+		</StrictMode>,
 	)
