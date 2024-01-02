@@ -8,10 +8,10 @@ A template for posting artworks created for a composition study.
 
 # Install
 
-First fork the repository, then...
+First start your own repository using this one as a template, then...
 
 ```bash
-git clone <your-fork>
+git clone <your-repo>
 npm install --include=dev
 ```
 
