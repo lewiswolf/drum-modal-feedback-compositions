@@ -74,20 +74,18 @@ Add your audio files here! Ideally in mp3 format for faster loading.
 Add the title of your project, your name, a description of the project, and any acknowledgements such as grants and ethics. You can also set your submission to be randomised on every page load using `randomise_config`.
 
 ```tsx
-<React.StrictMode>
-	<header>
-		<h1>Title</h1>
-		<h2>curated by ...</h2>
-		<p>description and links</p>
-	</header>
-	<main>
-		<Submissions randomise_config={true} />
-	</main>
-	<footer>
-		<p>acknowledgements</p>
-		...
-	</footer>
-</React.StrictMode>
+<header>
+	<h1>Title</h1>
+	<h2>curated by ...</h2>
+	<p>description and links</p>
+</header>
+<main>
+	<Submissions randomise_config={true} />
+</main>
+<footer>
+	<p>acknowledgements</p>
+	...
+</footer>
 ```
 
 ### `src/config.ts`
