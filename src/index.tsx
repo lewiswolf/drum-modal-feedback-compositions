@@ -20,7 +20,7 @@ root &&
 			</main>
 			<footer>
 				<p>acknowledgements</p>
-				<a href='http://lewiswolstanholme.co.uk' rel='noreferrer' target='_blank'>
+				<a href='https://lewiswolstanholme.co.uk' rel='noreferrer' target='_blank'>
 					web design by lewis wolstanholme
 				</a>
 			</footer>
