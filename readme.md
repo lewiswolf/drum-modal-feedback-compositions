@@ -113,7 +113,7 @@ const config: SubmissionJSON[] = [
 			name: 'Lewis Wolstanholme',
 			links: [
 				{
-					href: 'http://lewiswolstanholme.co.uk',
+					href: 'https://lewiswolstanholme.co.uk',
 					type 'website',
 				},
 				{
