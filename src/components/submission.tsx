@@ -2,6 +2,15 @@
 import { Fragment, useEffect, useRef, useState } from 'react'
 import { Playbar } from 'maxmsp-gui'
 
+// this is an untyped part of vite, referencing the vite base url
+declare global {
+	interface ImportMeta {
+		env: {
+			BASE_URL: string
+		}
+	}
+}
+
 const Submission: React.FC<{
 	author?: SubmissionJSON['author']
 	audio?: SubmissionJSON['audio']
@@ -77,7 +86,7 @@ const Submission: React.FC<{
 			{audio.length ? (
 				audio.map((filename: string) => (
 					<Fragment key={filename}>
-						<audio ref={audio_ref} src={`/compositions-for-arbitrarily-shaped-drums/audio/${filename}`} />
+						<audio ref={audio_ref} src={`${import.meta.env.BASE_URL}/audio/${filename}`} />
 						<Playbar
 							ariaLabel={author ? `audio player for ${author.name.toLowerCase()}` : 'audio player'}
 							setPlaying={audio_playing}
