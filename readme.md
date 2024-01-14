@@ -146,3 +146,11 @@ npm run test
 ```bash
 npm run deploy
 ```
+
+# Updating the Template
+
+```bash
+git remote add template https://github.com/lewiswolf/composition-study-template
+git fetch --all
+git merge template/master
+```
