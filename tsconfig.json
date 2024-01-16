@@ -37,6 +37,7 @@
 		"jsx": "react-jsx",
 		"lib": ["dom", "dom.iterable", "ESNext"],
 		"target": "ESNext",
+		"types": ["vite/client"],
 		// completeness
 		"skipLibCheck": true
 	},

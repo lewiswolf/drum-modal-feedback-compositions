@@ -2,15 +2,6 @@
 import { Fragment, useEffect, useRef, useState } from 'react'
 import { Playbar } from 'maxmsp-gui'
 
-// this is an untyped part of vite, referencing the vite base url
-declare global {
-	interface ImportMeta {
-		env: {
-			BASE_URL: string
-		}
-	}
-}
-
 const Submission: React.FC<{
 	author?: SubmissionJSON['author']
 	audio?: SubmissionJSON['audio']
