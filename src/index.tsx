@@ -31,8 +31,7 @@ root &&
 					All research carried out as part of this work was conducted by the authors, except for select
 					musical works which were written in collaboration with other artists. All collaborating artists gave
 					express permission for their work and acknowledgement to be included in this research, and they
-					retain all rights to their musical and artistic products. The technological assets explicitly
-					developed as part of this work was designed by the authors and has been open-sourced accordingly.
+					retain all rights to their musical and artistic products.
 				</p>
 			</footer>
 		</StrictMode>,
