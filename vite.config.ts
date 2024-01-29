@@ -4,7 +4,7 @@ import { compression } from 'vite-plugin-compression2'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-	base: '/name-of-your-github-repo',
+	base: '/drum-modal-feedback-compositions',
 	build: { target: 'ESNext' },
 	plugins: [
 		compression({

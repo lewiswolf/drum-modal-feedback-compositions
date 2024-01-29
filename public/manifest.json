@@ -1,6 +1,6 @@
 {
 	"background_color": "#e5e5e5",
-	"description": "description",
+	"description": "Compositions used as part of the study 'Drum Modal Feedback: Augmented Percussion Design through Performance'",
 	"developer": {
 		"name": "Lewis Wolstanholme",
 		"url": "http://lewiswolstanholme.co.uk"
@@ -29,8 +29,8 @@
 		}
 	],
 	"manifest_version": 2,
-	"name": "Title",
-	"short_name": "short-title",
+	"name": "drum-modal-feedback-compositions",
+	"short_name": "drum-modal-feedback-compositions",
 	"start_url": ".",
 	"theme_color": "#333333"
 }
