@@ -1,0 +1,98 @@
+{
+	"name": "composition-study-template",
+	"homepage": ".",
+	"private": true,
+	"version": "1.0.1",
+	"type": "module",
+	"dependencies": {
+		"maxmsp-gui": "^2.3.3",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"sass": "^1.70.0"
+	},
+	"devDependencies": {
+		"@types/react": "^18.2.48",
+		"@types/react-dom": "^18.2.18",
+		"@typescript-eslint/eslint-plugin": "^6.19.0",
+		"@typescript-eslint/parser": "^6.19.0",
+		"@vitejs/plugin-react-swc": "^3.5.0",
+		"eslint": "^8.56.0",
+		"eslint-plugin-react-hooks": "^4.6.0",
+		"eslint-plugin-react-refresh": "^0.4.5",
+		"gh-pages": "^6.1.1",
+		"prettier": "^3.2.2",
+		"stylelint": "^16.2.0",
+		"stylelint-config-standard-scss": "^13.0.0",
+		"typescript": "^5.3.3",
+		"vite": "^5.0.12",
+		"vite-plugin-compression2": "^0.11.0"
+	},
+	"scripts": {
+		"build": "tsc && vite build",
+		"dev": "vite --host",
+		"preview": "vite preview",
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d dist",
+		"format": "prettier . --write",
+		"test": "tsc && eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 && stylelint **/*.scss"
+	},
+	"eslintConfig": {
+		"root": true,
+		"env": {
+			"browser": true,
+			"es2020": true
+		},
+		"extends": [
+			"eslint:recommended",
+			"plugin:@typescript-eslint/strict-type-checked",
+			"plugin:react-hooks/recommended"
+		],
+		"ignorePatterns": [
+			"dist",
+			"unused"
+		],
+		"parser": "@typescript-eslint/parser",
+		"parserOptions": {
+			"project": [
+				"./tsconfig.json",
+				"./tsconfig.node.json"
+			]
+		},
+		"plugins": [
+			"react-refresh"
+		],
+		"rules": {
+			"react-refresh/only-export-components": [
+				"warn",
+				{
+					"allowConstantExport": true
+				}
+			]
+		}
+	},
+	"prettier": {
+		"arrowParens": "always",
+		"bracketSpacing": true,
+		"bracketSameLine": false,
+		"endOfLine": "lf",
+		"htmlWhitespaceSensitivity": "strict",
+		"jsxSingleQuote": true,
+		"printWidth": 120,
+		"quoteProps": "as-needed",
+		"semi": false,
+		"singleQuote": true,
+		"tabWidth": 4,
+		"trailingComma": "all",
+		"useTabs": true
+	},
+	"stylelint": {
+		"extends": "stylelint-config-standard-scss",
+		"rules": {
+			"declaration-empty-line-before": null,
+			"no-descending-specificity": null,
+			"no-invalid-position-at-import-rule": null,
+			"property-no-vendor-prefix": null,
+			"scss/double-slash-comment-empty-line-before": null
+		}
+	}
+}

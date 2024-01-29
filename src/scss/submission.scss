@@ -1,0 +1,30 @@
+.submission {
+	width: 80%;
+	max-width: 711.11px;
+	margin: auto;
+
+	p {
+		text-align: right;
+		margin: 5px 0;
+	}
+
+	h3 {
+		margin-bottom: 0;
+		font-size: 24px;
+	}
+
+	.videos {
+		display: grid;
+		grid-gap: 25px;
+
+		iframe {
+			@include video;
+			margin: auto;
+		}
+	}
+
+	@media (width <= $ipad) {
+		width: calc(100vw - 50px);
+		margin: 0;
+	}
+}
