@@ -11,9 +11,7 @@ root &&
 	createRoot(root).render(
 		<StrictMode>
 			<header>
-				<h1 style={{ fontSize: '30px' }}>
-					Drum Modal Feedback: Augmented Percussion Design through Performance
-				</h1>
+				<h1>Drum Modal Feedback: The Process Driven Design of an Augmented Percussion Instrument</h1>
 				<h2>curated by Lewis Wolstanholme, Jordie Shier, Rodrigo Constanzo & Andrew McPherson</h2>
 				{/* <p>description and links</p> */}
 			</header>
