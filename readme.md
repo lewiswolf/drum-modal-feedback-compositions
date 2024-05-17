@@ -152,5 +152,5 @@ npm run deploy
 ```bash
 git remote add template https://github.com/lewiswolf/composition-study-template
 git fetch --all
-git merge template/master
+git merge template/master --allow-unrelated-histories
 ```
