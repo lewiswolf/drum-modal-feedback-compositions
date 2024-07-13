@@ -1,14 +1,25 @@
 // dependencies
-import { Fragment, useEffect, useRef, useState } from 'react'
+import { type FC, Fragment, useEffect, useRef, useState } from 'react'
 import { Playbar } from 'maxmsp-gui'
 
-const Submission: React.FC<{
+// src
+import type { SubmissionJSON } from '../config'
+
+export const Submission: FC<{
 	author?: SubmissionJSON['author']
 	audio?: SubmissionJSON['audio']
 	video?: SubmissionJSON['video']
 	updatePlaying?: boolean
 	onPlay: (b: boolean) => void
-}> = ({ author = undefined, audio = [], video = [], updatePlaying = undefined, onPlay = () => {} }): JSX.Element => {
+}> = ({
+	author = undefined,
+	audio = [],
+	video = [],
+	updatePlaying = undefined,
+	onPlay = () => {
+		/* */
+	},
+}) => {
 	/*
 	Generates an interactive submission from a given object of type SubmissionJSON.
 	*/
@@ -41,14 +52,6 @@ const Submission: React.FC<{
 			setPlaying(false)
 		}
 	}, [updatePlaying])
-	// toggle playing, fire call back, and destroy interval
-	const setPlaying = (b: boolean) => {
-		setPlayingState(b)
-		if (!b) {
-			window.clearInterval(interval.current)
-			interval.current = undefined
-		}
-	}
 	// run an interval to keep track of time
 	useEffect(() => {
 		if (audio_playing) {
@@ -71,6 +74,14 @@ const Submission: React.FC<{
 			clearInterval(interval.current)
 		}
 	}, [])
+	// toggle playing, fire call back, and destroy interval
+	const setPlaying = (b: boolean) => {
+		setPlayingState(b)
+		if (!b) {
+			window.clearInterval(interval.current)
+			interval.current = undefined
+		}
+	}
 
 	return (
 		<div className='submission' ref={self}>
@@ -138,7 +149,7 @@ const Submission: React.FC<{
 						<p key={obj.href}>
 							<i>{obj.type}</i>
 							<span>{' : '}</span>
-							<a href={href} target='_blank'>
+							<a href={href} rel='noreferrer' target='_blank'>
 								{obj.href.replace(/.+\/\/|www.|/g, '')}
 							</a>
 						</p>
@@ -150,5 +161,3 @@ const Submission: React.FC<{
 		</div>
 	)
 }
-
-export default Submission

@@ -107,7 +107,7 @@ type SubmissionJSON = {
 For example, to include one of my own compositions, you would write:
 
 ```ts
-const config: SubmissionJSON[] = [
+export const config: SubmissionJSON[] = [
 	{
 		author: {
 			name: 'Lewis Wolstanholme',

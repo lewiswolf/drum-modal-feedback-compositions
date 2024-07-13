@@ -108,10 +108,11 @@ body {
 	}
 
 	a {
-		@include focus;
 		color: inherit;
 		user-select: none;
 		-webkit-user-select: none;
+
+		@include focus;
 	}
 }
 

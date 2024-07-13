@@ -1,13 +1,13 @@
-import { useState } from 'react'
+import { type FC, useState } from 'react'
 // src
-import config from '../config'
-import Submission from './submission'
+import { type SubmissionJSON, config } from '../config'
+import { Submission } from './submission'
 
 const random_config_cache: Readonly<SubmissionJSON[]> = config.sort(() => Math.random() - 0.5)
 
-export const Submissions: React.FC<{
+export const Submissions: FC<{
 	randomise_config?: boolean
-}> = ({ randomise_config = true }): JSX.Element => {
+}> = ({ randomise_config = true }) => {
 	/*
 	This component renders an array of submissions, making sure that only submission is allowed to be playing at
 	*/
@@ -20,7 +20,7 @@ export const Submissions: React.FC<{
 				return (
 					<Submission
 						{...S}
-						key={i}
+						key={i.toString()}
 						updatePlaying={index_playing === i + 1}
 						onPlay={(b: boolean) => {
 							if (b) {

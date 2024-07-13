@@ -2,30 +2,26 @@
 	"name": "composition-study-template",
 	"homepage": ".",
 	"private": true,
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"type": "module",
 	"dependencies": {
-		"maxmsp-gui": "^2.4.0",
+		"maxmsp-gui": "^2.4.2",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
-		"sass": "^1.77.2"
+		"sass": "^1.77.8"
 	},
 	"devDependencies": {
-		"@types/react": "^18.3.2",
+		"@biomejs/biome": "^1.8.3",
+		"@types/react": "^18.3.3",
 		"@types/react-dom": "^18.3.0",
-		"@typescript-eslint/eslint-plugin": "^7.9.0",
-		"@typescript-eslint/parser": "^7.9.0",
-		"@vitejs/plugin-react-swc": "^3.6.0",
-		"eslint": "^8.57.0",
-		"eslint-plugin-react-hooks": "^4.6.2",
-		"eslint-plugin-react-refresh": "^0.4.7",
+		"@vitejs/plugin-react-swc": "^3.7.0",
 		"gh-pages": "^6.1.1",
-		"prettier": "^3.2.5",
-		"stylelint": "^16.5.0",
+		"prettier": "^3.3.3",
+		"stylelint": "^16.7.0",
 		"stylelint-config-standard-scss": "^13.1.0",
-		"typescript": "^5.4.5",
-		"vite": "^5.2.11",
-		"vite-plugin-compression2": "^1.1.0"
+		"typescript": "^5.5.3",
+		"vite": "^5.3.3",
+		"vite-plugin-compression2": "^1.1.2"
 	},
 	"scripts": {
 		"build": "tsc && vite build",
@@ -34,33 +30,7 @@
 		"predeploy": "npm run build",
 		"deploy": "gh-pages -d dist",
 		"format": "prettier . --write",
-		"test": "tsc && eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 && stylelint **/*.scss"
-	},
-	"eslintConfig": {
-		"root": true,
-		"env": {
-			"browser": true,
-			"es2020": true
-		},
-		"extends": [
-			"eslint:recommended",
-			"plugin:@typescript-eslint/strict-type-checked",
-			"plugin:react-hooks/recommended"
-		],
-		"ignorePatterns": [
-			"dist",
-			"unused"
-		],
-		"parser": "@typescript-eslint/parser",
-		"parserOptions": {
-			"project": [
-				"./tsconfig.json",
-				"./tsconfig.node.json"
-			]
-		},
-		"plugins": [
-			"react-refresh"
-		]
+		"test": "tsc && biome lint && stylelint **/*.scss"
 	},
 	"prettier": {
 		"arrowParens": "always",

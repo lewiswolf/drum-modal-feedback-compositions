@@ -18,8 +18,9 @@
 		grid-gap: 25px;
 
 		iframe {
-			@include video;
 			margin: auto;
+
+			@include video;
 		}
 	}
 
