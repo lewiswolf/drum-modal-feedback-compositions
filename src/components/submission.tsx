@@ -29,7 +29,7 @@ export const Submission: FC<{
 	const [width, setWidth] = useState<number>(0)
 	useEffect(() => {
 		const listener = (): void => {
-			setWidth(self.current?.clientWidth || 0)
+			setWidth(self.current?.clientWidth ?? 0)
 		}
 		window.addEventListener('resize', listener)
 		listener()
@@ -47,7 +47,11 @@ export const Submission: FC<{
 	useEffect(() => {
 		if (updatePlaying !== undefined) {
 			setPlaying(updatePlaying)
-			updatePlaying ? audio_ref.current?.play() : audio_ref.current?.pause()
+			if (updatePlaying) {
+				void audio_ref.current?.play()
+			} else {
+				audio_ref.current?.pause()
+			}
 		} else {
 			setPlaying(false)
 		}
