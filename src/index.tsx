@@ -3,8 +3,8 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
 // src
+import { Submissions } from './components/index.tsx'
 import './scss/index.scss'
-import { Submissions } from './components'
 
 createRoot(document.getElementById('root') as NonNullable<HTMLDivElement>).render(
 	<StrictMode>

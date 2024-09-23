@@ -3,7 +3,7 @@ import { type FC, Fragment, useEffect, useRef, useState } from 'react'
 import { Playbar } from 'maxmsp-gui'
 
 // src
-import type { SubmissionJSON } from '../config'
+import type { SubmissionJSON } from '../config.ts'
 
 export const Submission: FC<{
 	author?: SubmissionJSON['author']
@@ -89,7 +89,7 @@ export const Submission: FC<{
 
 	return (
 		<div className='submission' ref={self}>
-			{audio.length ? (
+			{audio.length > 0 ? (
 				audio.map((filename: string) => (
 					<Fragment key={filename}>
 						<audio ref={audio_ref} src={`${import.meta.env.BASE_URL}/audio/${filename}`} />
@@ -121,7 +121,7 @@ export const Submission: FC<{
 			) : (
 				<></>
 			)}
-			{video.length ? (
+			{video.length > 0 ? (
 				<div className='videos'>
 					{video.map((hash: string) => (
 						<iframe

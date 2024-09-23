@@ -22,6 +22,9 @@
 				"noInferrableTypes": "off",
 				"noParameterAssign": "off",
 				"useNamingConvention": "off"
+			},
+			"suspicious": {
+				"noReactSpecificProps": "off"
 			}
 		}
 	},

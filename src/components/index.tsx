@@ -1,7 +1,7 @@
 import { type FC, useState } from 'react'
 // src
-import { type SubmissionJSON, config } from '../config'
-import { Submission } from './submission'
+import { type SubmissionJSON, config } from '../config.ts'
+import { Submission } from './submission.tsx'
 
 const random_config_cache: readonly SubmissionJSON[] = config.sort(() => Math.random() - 0.5)
 
