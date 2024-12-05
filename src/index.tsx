@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client'
 
 // src
 import './scss/index.scss'
-import { Submissions } from './components/index.tsx'
+// import { Submissions } from './components/index.tsx'
 
 createRoot(document.getElementById('root') as NonNullable<HTMLDivElement>).render(
 	<StrictMode>
@@ -14,7 +14,8 @@ createRoot(document.getElementById('root') as NonNullable<HTMLDivElement>).rende
 			{/* <p>description and links</p> */}
 		</header>
 		<main>
-			<Submissions randomise_config={true} />
+			<p style={{ textAlign: 'center' }}>...coming soon...</p>
+			{/* <Submissions randomise_config={true} /> */}
 		</main>
 		<footer>
 			<p>
