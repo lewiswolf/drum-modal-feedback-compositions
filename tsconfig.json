@@ -10,7 +10,7 @@
 		"noImplicitOverride": true,
 		"noImplicitReturns": true,
 		"noImplicitThis": true,
-		"noPropertyAccessFromIndexSignature": false,
+		"noPropertyAccessFromIndexSignature": true,
 		"noUncheckedIndexedAccess": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
@@ -29,17 +29,18 @@
 		// javascript support
 		"allowJs": false,
 		// interop constraints
+		"allowImportingTsExtensions": true,
 		"allowSyntheticDefaultImports": true,
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
 		"isolatedModules": true,
 		// language and environment
 		"jsx": "react-jsx",
-		"lib": ["dom", "dom.iterable", "ESNext"],
+		"lib": ["DOM", "DOM.iterable", "ESNext"],
 		"target": "ESNext",
-		"types": ["vite/client"],
-		// completeness
-		"skipLibCheck": true
+		// compilation
+		"importHelpers": true,
+		"skipLibCheck": false
 	},
 	"include": ["src"],
 	"references": [{ "path": "./tsconfig.node.json" }]

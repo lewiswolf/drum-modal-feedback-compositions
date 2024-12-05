@@ -4,7 +4,7 @@ A template for posting artworks created for a composition study.
 
 # Dependencies
 
--   [node](https://formulae.brew.sh/formula/node)
+- [node](https://formulae.brew.sh/formula/node)
 
 # Install
 
@@ -107,7 +107,7 @@ type SubmissionJSON = {
 For example, to include one of my own compositions, you would write:
 
 ```ts
-const config: SubmissionJSON[] = [
+export const config: SubmissionJSON[] = [
 	{
 		author: {
 			name: 'Lewis Wolstanholme',
@@ -152,5 +152,5 @@ npm run deploy
 ```bash
 git remote add template https://github.com/lewiswolf/composition-study-template
 git fetch --all
-git merge template/master
+git merge template/master --allow-unrelated-histories
 ```

@@ -2,30 +2,30 @@
 	"name": "composition-study-template",
 	"homepage": ".",
 	"private": true,
-	"version": "1.0.1",
+	"version": "1.1.1",
 	"type": "module",
 	"dependencies": {
-		"maxmsp-gui": "^2.3.3",
-		"react": "^18.2.0",
-		"react-dom": "^18.2.0",
-		"sass": "^1.70.0"
+		"maxmsp-gui": "^2.4.7",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
+		"sass-embedded": "^1.82.0"
 	},
 	"devDependencies": {
-		"@types/react": "^18.2.53",
-		"@types/react-dom": "^18.2.18",
-		"@typescript-eslint/eslint-plugin": "^6.21.0",
-		"@typescript-eslint/parser": "^6.21.0",
-		"@vitejs/plugin-react-swc": "^3.6.0",
-		"eslint": "^8.56.0",
-		"eslint-plugin-react-hooks": "^4.6.0",
-		"eslint-plugin-react-refresh": "^0.4.5",
-		"gh-pages": "^6.1.1",
-		"prettier": "^3.2.5",
-		"stylelint": "^16.2.1",
-		"stylelint-config-standard-scss": "^13.0.0",
-		"typescript": "^5.3.3",
-		"vite": "^5.0.12",
-		"vite-plugin-compression2": "^0.12.0"
+		"@biomejs/biome": "^1.9.4",
+		"@eslint/js": "^9.16.0",
+		"@types/react": "^18.3.13",
+		"@types/react-dom": "^18.3.1",
+		"@vitejs/plugin-react-swc": "^3.7.2",
+		"eslint": "^9.16.0",
+		"eslint-plugin-react-hooks": "^5.0.0",
+		"gh-pages": "^6.2.0",
+		"prettier": "^3.4.2",
+		"stylelint": "^16.11.0",
+		"stylelint-config-standard-scss": "^14.0.0",
+		"typescript": "^5.7.2",
+		"typescript-eslint": "^8.17.0",
+		"vite": "^6.0.3",
+		"vite-plugin-compression2": "^1.3.3"
 	},
 	"scripts": {
 		"build": "tsc && vite build",
@@ -33,42 +33,8 @@
 		"preview": "vite preview",
 		"predeploy": "npm run build",
 		"deploy": "gh-pages -d dist",
-		"format": "prettier . --write",
-		"test": "tsc && eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 && stylelint **/*.scss"
-	},
-	"eslintConfig": {
-		"root": true,
-		"env": {
-			"browser": true,
-			"es2020": true
-		},
-		"extends": [
-			"eslint:recommended",
-			"plugin:@typescript-eslint/strict-type-checked",
-			"plugin:react-hooks/recommended"
-		],
-		"ignorePatterns": [
-			"dist",
-			"unused"
-		],
-		"parser": "@typescript-eslint/parser",
-		"parserOptions": {
-			"project": [
-				"./tsconfig.json",
-				"./tsconfig.node.json"
-			]
-		},
-		"plugins": [
-			"react-refresh"
-		],
-		"rules": {
-			"react-refresh/only-export-components": [
-				"warn",
-				{
-					"allowConstantExport": true
-				}
-			]
-		}
+		"format": "biome format --write && prettier --write ./**/*.html ./**/*.md ./**/*.scss",
+		"test": "tsc && biome lint && eslint . && stylelint **/*.scss"
 	},
 	"prettier": {
 		"arrowParens": "always",

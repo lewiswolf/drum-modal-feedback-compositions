@@ -6,6 +6,7 @@ import { compression } from 'vite-plugin-compression2'
 export default defineConfig({
 	base: '/drum-modal-feedback-compositions',
 	build: { target: 'ESNext' },
+	esbuild: { legalComments: 'none' },
 	plugins: [
 		compression({
 			algorithm: 'gzip',

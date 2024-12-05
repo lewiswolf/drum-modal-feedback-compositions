@@ -1,4 +1,14 @@
-const config: SubmissionJSON[] = [
+export type SubmissionJSON = {
+	author?: {
+		name: string
+		links: { href: string; type: 'instagram' | 'vimeo' | 'website' }[]
+		quote?: string
+	}
+	audio?: string[]
+	video?: string[]
+}
+
+export const config: SubmissionJSON[] = [
 	{
 		author: {
 			name: 'Anonymous X Barrell Jones',
@@ -35,5 +45,3 @@ const config: SubmissionJSON[] = [
 		video: ['4XrQqV744z8', '511Se3g2A2w'],
 	},
 ] as const
-
-export default config

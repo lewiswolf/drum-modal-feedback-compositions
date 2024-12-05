@@ -1,14 +1,26 @@
 // dependencies
-import { Fragment, useEffect, useRef, useState } from 'react'
+import { type FC, Fragment, useEffect, useRef, useState } from 'react'
 import { Playbar } from 'maxmsp-gui'
 
-const Submission: React.FC<{
+// src
+import type { SubmissionJSON } from '../config.ts'
+import '../scss/submission.scss'
+
+export const Submission: FC<{
 	author?: SubmissionJSON['author']
 	audio?: SubmissionJSON['audio']
 	video?: SubmissionJSON['video']
 	updatePlaying?: boolean
 	onPlay: (b: boolean) => void
-}> = ({ author = undefined, audio = [], video = [], updatePlaying = undefined, onPlay = () => {} }): JSX.Element => {
+}> = ({
+	author = undefined,
+	audio = [],
+	video = [],
+	updatePlaying = undefined,
+	onPlay = () => {
+		/* */
+	},
+}) => {
 	/*
 	Generates an interactive submission from a given object of type SubmissionJSON.
 	*/
@@ -18,7 +30,7 @@ const Submission: React.FC<{
 	const [width, setWidth] = useState<number>(0)
 	useEffect(() => {
 		const listener = (): void => {
-			setWidth(self.current?.clientWidth || 0)
+			setWidth(self.current?.clientWidth ?? 0)
 		}
 		window.addEventListener('resize', listener)
 		listener()
@@ -36,19 +48,15 @@ const Submission: React.FC<{
 	useEffect(() => {
 		if (updatePlaying !== undefined) {
 			setPlaying(updatePlaying)
-			updatePlaying ? audio_ref.current?.play() : audio_ref.current?.pause()
+			if (updatePlaying) {
+				void audio_ref.current?.play()
+			} else {
+				audio_ref.current?.pause()
+			}
 		} else {
 			setPlaying(false)
 		}
 	}, [updatePlaying])
-	// toggle playing, fire call back, and destroy interval
-	const setPlaying = (b: boolean) => {
-		setPlayingState(b)
-		if (!b) {
-			window.clearInterval(interval.current)
-			interval.current = undefined
-		}
-	}
 	// run an interval to keep track of time
 	useEffect(() => {
 		if (audio_playing) {
@@ -71,10 +79,18 @@ const Submission: React.FC<{
 			clearInterval(interval.current)
 		}
 	}, [])
+	// toggle playing, fire call back, and destroy interval
+	const setPlaying = (b: boolean) => {
+		setPlayingState(b)
+		if (!b) {
+			window.clearInterval(interval.current)
+			interval.current = undefined
+		}
+	}
 
 	return (
 		<div className='submission' ref={self}>
-			{audio.length ? (
+			{audio.length > 0 ? (
 				audio.map((filename: string) => (
 					<Fragment key={filename}>
 						<audio ref={audio_ref} src={`${import.meta.env.BASE_URL}/audio/${filename}`} />
@@ -106,7 +122,7 @@ const Submission: React.FC<{
 			) : (
 				<></>
 			)}
-			{video.length ? (
+			{video.length > 0 ? (
 				<div className='videos'>
 					{video.map((hash: string) => (
 						<iframe
@@ -138,7 +154,7 @@ const Submission: React.FC<{
 						<p key={obj.href}>
 							<i>{obj.type}</i>
 							<span>{' : '}</span>
-							<a href={href} target='_blank'>
+							<a href={href} rel='noreferrer' target='_blank'>
 								{obj.href.replace(/.+\/\/|www.|/g, '')}
 							</a>
 						</p>
@@ -150,5 +166,3 @@ const Submission: React.FC<{
 		</div>
 	)
 }
-
-export default Submission
