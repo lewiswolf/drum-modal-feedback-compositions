@@ -4,7 +4,7 @@ A template for posting artworks created for a composition study.
 
 # Dependencies
 
--   [node](https://formulae.brew.sh/formula/node)
+- [node](https://formulae.brew.sh/formula/node)
 
 # Install
 

@@ -4,6 +4,7 @@ import { Playbar } from 'maxmsp-gui'
 
 // src
 import type { SubmissionJSON } from '../config.ts'
+import '../scss/submission.scss'
 
 export const Submission: FC<{
 	author?: SubmissionJSON['author']

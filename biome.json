@@ -1,11 +1,15 @@
 {
 	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-	"organizeImports": {
-		"enabled": true
-	},
 	"files": {
 		"ignore": ["**/node_modules/**", "**/dist/**", "**/unused/**"],
-		"include": ["**/*.html", "**/*.json", "**/*.scss", "**/*.ts", "**/*.d.ts", "**/*.tsx"]
+		"include": ["**/*.js", "**/*.json", "**/*.ts", "**/*.d.ts", "**/*.tsx"]
+	},
+	"formatter": {
+		"enabled": true,
+		"lineEnding": "lf",
+		"lineWidth": 125,
+		"indentWidth": 4,
+		"indentStyle": "tab"
 	},
 	"linter": {
 		"enabled": true,
@@ -19,7 +23,6 @@
 			},
 			"style": {
 				"noDefaultExport": "off",
-				"noInferrableTypes": "off",
 				"noParameterAssign": "off",
 				"useNamingConvention": "off"
 			},
@@ -28,12 +31,8 @@
 			}
 		}
 	},
-	"formatter": {
-		"enabled": false,
-		"lineEnding": "lf",
-		"lineWidth": 125,
-		"indentWidth": 4,
-		"indentStyle": "tab"
+	"organizeImports": {
+		"enabled": true
 	},
 	"javascript": {
 		"formatter": {

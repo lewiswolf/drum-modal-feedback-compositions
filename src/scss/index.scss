@@ -1,40 +1,4 @@
-// var
-
-$ipad: 812px;
-$iphone: 400px;
-$background: #e5e5e5;
-$foreground: #101010;
-$highlight: #b4b4b4;
-
-// mixins
-
-@mixin focus() {
-	&:focus-visible {
-		outline: $highlight solid 3px;
-	}
-}
-
-@mixin video() {
-	height: 40.5vw;
-	max-height: 400px;
-	width: auto;
-	max-width: 100%;
-	aspect-ratio: 16/9;
-	justify-self: center;
-	user-select: none;
-	-webkit-user-select: none;
-
-	@media (max-width: $ipad) {
-		height: auto;
-		width: 100%;
-	}
-}
-
-@mixin highlight-text() {
-	::selection {
-		background-color: $highlight;
-	}
-}
+@use './utils.scss' as utils;
 
 // structure
 
@@ -45,10 +9,10 @@ html {
 	font-family: Inter, sans-serif;
 	font-size: 16px;
 	font-weight: 500;
-	color: $foreground;
+	color: utils.$foreground;
 	background-image: url('./images/background.png');
 	background-size: 30px 30px;
-	background-color: $background;
+	background-color: utils.$background;
 }
 
 body {
@@ -61,7 +25,7 @@ body {
 	text-size-adjust: 100%;
 	color: inherit;
 
-	@media (width <= $ipad) {
+	@media (max-width: utils.$ipad) {
 		margin: 0;
 		padding: 25px;
 	}
@@ -73,7 +37,7 @@ body {
 	max-width: calc(100vw - 50px);
 	margin: auto;
 
-	@media (width <= $ipad) {
+	@media (max-width: utils.$ipad) {
 		width: 100%;
 		margin: 0;
 	}
@@ -112,7 +76,7 @@ body {
 		user-select: none;
 		-webkit-user-select: none;
 
-		@include focus;
+		@include utils.focus;
 	}
 }
 
@@ -127,7 +91,7 @@ header {
 	}
 }
 
-footer a:last-of-type {
+footer footer a:last-of-type {
 	margin-top: 0.83em;
 	justify-self: right;
 	text-decoration: none;
@@ -146,11 +110,8 @@ main {
 	display: grid;
 	grid-gap: 100px;
 
-	@media (width <= $ipad) {
+	@media (max-width: utils.$ipad) {
 		margin: 100px 0;
 		grid-gap: 50px;
 	}
 }
-
-// children
-@import 'submission';
