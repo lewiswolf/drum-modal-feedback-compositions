@@ -127,7 +127,6 @@ export const Submission: FC<{
 					{video.map((hash: string) => (
 						<iframe
 							allow='accelerometer; autoplay; encrypted-media; fullscreen; gyroscope;'
-							frameBorder={0}
 							key={hash}
 							src={`https://www.youtube-nocookie.com/embed/${hash}?theme=dark&color=white`}
 							title={author ? author.name : 'anonymous'}
