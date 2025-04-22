@@ -21,7 +21,7 @@ export const config: SubmissionJSON[] = [
 			name: 'Lewis Wolstanholme X Ciarán Corr',
 			links: [{ href: 'https://lewiswolstanholme.co.uk', type: 'website' }],
 		},
-		audio: [],
+		audio: ['riser.wav'],
 	},
 	{
 		author: {

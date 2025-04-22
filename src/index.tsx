@@ -4,18 +4,17 @@ import { createRoot } from 'react-dom/client'
 
 // src
 import './scss/index.scss'
-// import { Submissions } from './components/index.tsx'
+import { Submissions } from './components/index.tsx'
 
 createRoot(document.getElementById('root') as NonNullable<HTMLDivElement>).render(
 	<StrictMode>
 		<header>
 			<h1>Drum Modal Feedback: Concept Design of an Augmented Percussion Instrument</h1>
-			{/* <h2>curated by Lewis Wolstanholme, Jordie Shier, Rodrigo Constanzo & Andrew McPherson</h2> */}
+			<h2>curated by Lewis Wolstanholme, Jordie Shier, Rodrigo Constanzo & Andrew McPherson</h2>
 			{/* <p>description and links</p> */}
 		</header>
 		<main>
-			<p style={{ textAlign: 'center' }}>...coming soon...</p>
-			{/* <Submissions randomise_config={true} /> */}
+			<Submissions randomise_config={true} />
 		</main>
 		<footer>
 			<p>
