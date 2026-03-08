@@ -43,7 +43,7 @@ export const Submission: FC<{
 	const audio_ref = useRef<HTMLAudioElement>(null)
 	const [audio_playing, setPlayingState] = useState<boolean>(false)
 	const [audio_time, setCurrentTime] = useState<number>(0)
-	const interval = useRef<ReturnType<typeof setInterval> | undefined>(undefined)
+	const interval = useRef<number | undefined>(undefined)
 	// update playing
 	useEffect(() => {
 		if (updatePlaying !== undefined) {
