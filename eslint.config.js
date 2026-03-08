@@ -1,10 +1,9 @@
 import eslint from '@eslint/js'
-import reactHooks from 'eslint-plugin-react-hooks'
+import { defineConfig } from 'eslint/config'
 import tseslint from 'typescript-eslint'
 
-export default tseslint.config(
+export default defineConfig(
 	eslint.configs.recommended,
-	reactHooks.configs['recommended-latest'],
 	...tseslint.configs.strictTypeChecked,
 	...tseslint.configs.stylisticTypeChecked,
 	{
@@ -20,7 +19,6 @@ export default tseslint.config(
 		},
 		rules: {
 			'@typescript-eslint/consistent-type-definitions': 'off',
-			'@typescript-eslint/non-nullable-type-assertion-style': 'off',
 		},
 	},
 	{
