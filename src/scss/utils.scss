@@ -15,8 +15,6 @@ $highlight: #b4b4b4;
 }
 
 @mixin video() {
-	height: 40.5vw;
-	max-height: 400px;
 	width: auto;
 	max-width: 100%;
 	aspect-ratio: 16/9;

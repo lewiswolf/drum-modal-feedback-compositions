@@ -1,5 +1,5 @@
 // dependencies
-import { type FC, Fragment, useEffect, useRef, useState } from 'react'
+import { type FC, Fragment, useCallback, useEffect, useRef, useState } from 'react'
 import { Playbar } from 'maxmsp-gui'
 
 // src
@@ -43,20 +43,29 @@ export const Submission: FC<{
 	const audio_ref = useRef<HTMLAudioElement>(null)
 	const [audio_playing, setPlayingState] = useState<boolean>(false)
 	const [audio_time, setCurrentTime] = useState<number>(0)
-	const interval = useRef<number | undefined>(undefined)
+	const interval = useRef<number | null>(null)
+	// toggle playing, fire call back, and destroy interval
+	const setPlaying = useCallback((b: boolean) => {
+		setPlayingState(b)
+		if (!b && interval.current) {
+			window.clearInterval(interval.current)
+			interval.current = null
+		}
+	}, [])
 	// update playing
 	useEffect(() => {
-		if (updatePlaying !== undefined) {
+		// eslint-disable-next-line no-undefined
+		if (updatePlaying === undefined) {
+			setPlaying(false)
+		} else {
 			setPlaying(updatePlaying)
 			if (updatePlaying) {
 				void audio_ref.current?.play()
 			} else {
 				audio_ref.current?.pause()
 			}
-		} else {
-			setPlaying(false)
 		}
-	}, [updatePlaying])
+	}, [updatePlaying, setPlaying])
 	// run an interval to keep track of time
 	useEffect(() => {
 		if (audio_playing) {
@@ -70,23 +79,17 @@ export const Submission: FC<{
 				}
 			}, 10)
 		}
-	}, [audio_playing, onPlay])
+	}, [audio_playing, onPlay, setPlaying])
 	// clean up on unmount
 	useEffect(() => {
 		const cleanup_audio = audio_ref.current
 		return (): void => {
 			cleanup_audio?.pause()
-			clearInterval(interval.current)
+			if (interval.current) {
+				clearInterval(interval.current)
+			}
 		}
 	}, [])
-	// toggle playing, fire call back, and destroy interval
-	const setPlaying = (b: boolean) => {
-		setPlayingState(b)
-		if (!b) {
-			window.clearInterval(interval.current)
-			interval.current = undefined
-		}
-	}
 
 	return (
 		<div className='submission' ref={self}>
@@ -149,7 +152,7 @@ export const Submission: FC<{
 						<i>{obj.type}</i>
 						<span> : </span>
 						<a href={href} rel='noreferrer' target='_blank'>
-							{obj.href.replace(/.+\/\/|www.|/g, '')}
+							{obj.href.replace(/.+\/\/|www.|/gu, '')}
 						</a>
 					</p>
 				)
