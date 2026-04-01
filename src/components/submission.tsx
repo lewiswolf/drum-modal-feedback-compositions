@@ -1,5 +1,5 @@
 // dependencies
-import { type FC, Fragment, useEffect, useRef, useState } from 'react'
+import { type FC, Fragment, useCallback, useEffect, useRef, useState } from 'react'
 import { Playbar } from 'maxmsp-gui'
 
 // src
@@ -43,20 +43,29 @@ export const Submission: FC<{
 	const audio_ref = useRef<HTMLAudioElement>(null)
 	const [audio_playing, setPlayingState] = useState<boolean>(false)
 	const [audio_time, setCurrentTime] = useState<number>(0)
-	const interval = useRef<number | undefined>(undefined)
+	const interval = useRef<number | null>(null)
+	// toggle playing, fire call back, and destroy interval
+	const setPlaying = useCallback((b: boolean) => {
+		setPlayingState(b)
+		if (!b && interval.current) {
+			window.clearInterval(interval.current)
+			interval.current = null
+		}
+	}, [])
 	// update playing
 	useEffect(() => {
-		if (updatePlaying !== undefined) {
+		// eslint-disable-next-line no-undefined
+		if (updatePlaying === undefined) {
+			setPlaying(false)
+		} else {
 			setPlaying(updatePlaying)
 			if (updatePlaying) {
 				void audio_ref.current?.play()
 			} else {
 				audio_ref.current?.pause()
 			}
-		} else {
-			setPlaying(false)
 		}
-	}, [updatePlaying])
+	}, [updatePlaying, setPlaying])
 	// run an interval to keep track of time
 	useEffect(() => {
 		if (audio_playing) {
@@ -64,28 +73,41 @@ export const Submission: FC<{
 				if (audio_ref.current && !audio_ref.current.ended) {
 					setCurrentTime(audio_ref.current.currentTime / audio_ref.current.duration)
 				} else {
-					setCurrentTime(0)
 					setPlaying(false)
+					setCurrentTime(0)
 					onPlay(false)
 				}
 			}, 10)
 		}
-	}, [audio_playing, onPlay])
+	}, [audio_playing, onPlay, setPlaying])
 	// clean up on unmount
 	useEffect(() => {
 		const cleanup_audio = audio_ref.current
 		return (): void => {
 			cleanup_audio?.pause()
-			clearInterval(interval.current)
+			if (interval.current) {
+				clearInterval(interval.current)
+			}
 		}
 	}, [])
-	// toggle playing, fire call back, and destroy interval
-	const setPlaying = (b: boolean) => {
-		setPlayingState(b)
-		if (!b) {
-			window.clearInterval(interval.current)
-			interval.current = undefined
+
+	// event handlers
+	const _onChange = (v: number) => {
+		// scrub through the audio
+		setCurrentTime(v)
+		if (audio_ref.current) {
+			audio_ref.current.currentTime = v * audio_ref.current.duration
 		}
+	}
+	const _onPlay = (b: boolean) => {
+		// play or pause the audio
+		if (b && audio_ref.current) {
+			setPlaying(true)
+		} else {
+			audio_ref.current?.pause()
+			setPlaying(false)
+		}
+		onPlay(b)
 	}
 
 	return (
@@ -96,26 +118,11 @@ export const Submission: FC<{
 						<audio ref={audio_ref} src={`${import.meta.env.BASE_URL}/audio/${filename}`} />
 						<Playbar
 							ariaLabel={author ? `audio player for ${author.name.toLowerCase()}` : 'audio player'}
+							onChange={_onChange}
+							onPlay={_onPlay}
 							setPlaying={audio_playing}
 							setValue={audio_time}
 							width={width}
-							onChange={(v: number) => {
-								// scrub through the audio
-								setCurrentTime(v)
-								if (audio_ref.current) {
-									audio_ref.current.currentTime = v * audio_ref.current.duration
-								}
-							}}
-							onPlay={(b: boolean) => {
-								// play or pause the audio
-								if (b && audio_ref.current) {
-									setPlaying(true)
-								} else {
-									audio_ref.current?.pause()
-									setPlaying(false)
-								}
-								onPlay(b)
-							}}
 						/>
 					</Fragment>
 				))}
@@ -149,7 +156,7 @@ export const Submission: FC<{
 						<i>{obj.type}</i>
 						<span> : </span>
 						<a href={href} rel='noreferrer' target='_blank'>
-							{obj.href.replace(/.+\/\/|www.|/g, '')}
+							{obj.href.replace(/.+\/\/|www.|/gu, '')}
 						</a>
 					</p>
 				)

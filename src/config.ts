@@ -11,29 +11,29 @@ export type SubmissionJSON = {
 export const config: SubmissionJSON[] = [
 	{
 		author: {
-			name: 'Julia Set X Barrell Jones',
 			links: [{ href: 'https://linktr.ee/julia___set', type: 'website' }],
+			name: 'Julia Set X Barrell Jones',
 		},
 		video: ['ywyDa7hx5ec'],
 	},
 	{
-		author: {
-			name: 'Lewis Wolstanholme X Ciarán Corr',
-			links: [{ href: 'https://lewiswolstanholme.co.uk', type: 'website' }],
-		},
 		audio: ['riser.wav'],
+		author: {
+			links: [{ href: 'https://lewiswolstanholme.co.uk', type: 'website' }],
+			name: 'Lewis Wolstanholme X Ciarán Corr',
+		},
 	},
 	{
 		author: {
-			name: 'Napoleon Skywalker',
 			links: [],
+			name: 'Napoleon Skywalker',
 		},
 		video: ['yQt1CheMuUo'],
 	},
 	{
 		author: {
-			name: 'Rodrigo Constanzo',
 			links: [{ href: 'https://rodrigoconstanzo.com', type: 'website' }],
+			name: 'Rodrigo Constanzo',
 		},
 		video: ['4XrQqV744z8', '511Se3g2A2w'],
 	},
