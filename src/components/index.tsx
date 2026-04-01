@@ -1,3 +1,5 @@
+// biome-ignore-all lint/nursery/noJsxPropsBind : here prop bindings are used alongside Aray.map()
+
 import { type FC, useState } from 'react'
 // src
 import { type SubmissionJSON, config } from '../config.ts'

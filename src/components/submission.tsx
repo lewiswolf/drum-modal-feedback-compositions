@@ -73,8 +73,8 @@ export const Submission: FC<{
 				if (audio_ref.current && !audio_ref.current.ended) {
 					setCurrentTime(audio_ref.current.currentTime / audio_ref.current.duration)
 				} else {
-					setCurrentTime(0)
 					setPlaying(false)
+					setCurrentTime(0)
 					onPlay(false)
 				}
 			}, 10)
@@ -91,6 +91,25 @@ export const Submission: FC<{
 		}
 	}, [])
 
+	// event handlers
+	const _onChange = (v: number) => {
+		// scrub through the audio
+		setCurrentTime(v)
+		if (audio_ref.current) {
+			audio_ref.current.currentTime = v * audio_ref.current.duration
+		}
+	}
+	const _onPlay = (b: boolean) => {
+		// play or pause the audio
+		if (b && audio_ref.current) {
+			setPlaying(true)
+		} else {
+			audio_ref.current?.pause()
+			setPlaying(false)
+		}
+		onPlay(b)
+	}
+
 	return (
 		<div className='submission' ref={self}>
 			{audio.length > 0 &&
@@ -99,26 +118,11 @@ export const Submission: FC<{
 						<audio ref={audio_ref} src={`${import.meta.env.BASE_URL}/audio/${filename}`} />
 						<Playbar
 							ariaLabel={author ? `audio player for ${author.name.toLowerCase()}` : 'audio player'}
+							onChange={_onChange}
+							onPlay={_onPlay}
 							setPlaying={audio_playing}
 							setValue={audio_time}
 							width={width}
-							onChange={(v: number) => {
-								// scrub through the audio
-								setCurrentTime(v)
-								if (audio_ref.current) {
-									audio_ref.current.currentTime = v * audio_ref.current.duration
-								}
-							}}
-							onPlay={(b: boolean) => {
-								// play or pause the audio
-								if (b && audio_ref.current) {
-									setPlaying(true)
-								} else {
-									audio_ref.current?.pause()
-									setPlaying(false)
-								}
-								onPlay(b)
-							}}
 						/>
 					</Fragment>
 				))}
