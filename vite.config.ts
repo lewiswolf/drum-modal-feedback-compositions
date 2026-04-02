@@ -16,7 +16,6 @@ export default defineConfig({
 				},
 			},
 		},
-		sourcemap: true,
 		target: 'baseline-widely-available',
 	},
 	plugins: [
