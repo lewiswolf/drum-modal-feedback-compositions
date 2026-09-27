@@ -1,4 +1,5 @@
 // biome-ignore-all lint/a11y/useMediaCaption : the audio file is intended as music, and likely does not have captions
+// biome-ignore-all lint/nursery/noUnsafeIframeSandbox : youtube / vimeo embeds do not work without allow-scripts + allow-same-origin
 /* eslint-disable @eslint-react/dom-no-unsafe-iframe-sandbox */
 /* eslint-disable @eslint-react/set-state-in-effect */
 /* eslint-disable react-hooks/set-state-in-effect */
@@ -116,9 +117,9 @@ export const Submission: FC<{
 						<audio ref={audio_ref} src={`${import.meta.env.BASE_URL}/audio/${filename}`} />
 						<Playbar
 							ariaLabel={author ? `audio player for ${author.name.toLowerCase()}` : 'audio player'}
+							isPlaying={audio_playing}
 							onChange={_onChange}
 							onPlay={_onPlay}
-							setPlaying={audio_playing}
 							setValue={audio_time}
 							width={width}
 						/>
